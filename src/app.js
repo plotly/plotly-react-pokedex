@@ -1,12 +1,12 @@
 'use strict';
 
-import App from './components/App.react';
+import PokeDex from './components/PokeDex.react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <App />,
+    <PokeDex />,
     document.getElementById('app')
   );
 });
