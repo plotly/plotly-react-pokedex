@@ -16,6 +16,13 @@ export default React.createClass({
 
     },
 
+    /*
+     * Sub render process to create the PokeListItems. We just iterate
+     * over an Immutable array of pokemon objects, and pass the values
+     * of each as props to new PokeListItem components.
+     * We also pass in the `i` index as a `key` prop, so that React
+     * can efficiently re-render when something changes.
+     */
     renderPokeList() {
 
         const pokeList = this.props.pokedex.map((pokemon, i) => {

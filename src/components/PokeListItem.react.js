@@ -15,12 +15,23 @@ export default React.createClass({
         })
     },
 
+    /*
+     * This component has a local state of `isOpen` which will determine
+     * whether or not the extra information section will be rendered
+     * at any given time. We want all the PokeListItems to be closed by default,
+     * until the user clicks them. You will see the handling below
+     */
     getInitialState() {
         return {
             isOpen: false
         };
     },
 
+    /*
+     * We set up this method to handle clicks on the PokeListItem.
+     * It takes its current isOpen value and sets its local state
+     * which forces a re-render!
+     */
     toggleOpen() {
 
         this.setState({
@@ -28,7 +39,18 @@ export default React.createClass({
         });
     },
 
+    /*
+     * Here we have a sub-render method, you can see that it gets called inside
+     * our main `render` method. This means that we can modularize our component,
+     * and handle logic and pass things off to these sub-renderers that we create!
+     */
     renderMoreInfo() {
+
+        /*
+         * In this case, if it has been clicked and the local state.isOpen === true,
+         * we want to render a moreInfo panel! If not, returning null means
+         * React will render nothing!
+         */
         if (this.state.isOpen) {
             return (
                 <div className="--more-info">
@@ -42,12 +64,16 @@ export default React.createClass({
         else return null;
     },
 
+
     render () {
+
+        /* Let's snag the name value from the immutable object */
+        const pokeName = this.props.pokemon.get('name');
 
         return (
             <div className="poke-item" onClick={this.toggleOpen}>
 
-                <h3 className="no-margin">{this.props.pokemon.get('name')}</h3>
+                <h3 className="no-margin">{pokeName}</h3>
 
                 {this.renderMoreInfo()}
             </div>
