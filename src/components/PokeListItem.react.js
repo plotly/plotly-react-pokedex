@@ -15,11 +15,41 @@ export default React.createClass({
         })
     },
 
+    getInitialState() {
+        return {
+            isOpen: false
+        };
+    },
+
+    toggleOpen() {
+
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    },
+
+    renderMoreInfo() {
+        if (this.state.isOpen) {
+            return (
+                <div className="--more-info">
+                    <p className="no-margin">
+                        {`resource_uri: ${this.props.pokemon.get('resource_uri')}`}
+                    </p>
+                </div>
+            );
+        }
+
+        else return null;
+    },
+
     render () {
+
         return (
-            <div>
-                <h3>{this.props.pokemon.get('name')}</h3>
-                <p>{this.props.pokemon.get('resource_uri')}</p>
+            <div className="poke-item" onClick={this.toggleOpen}>
+
+                <h3 className="no-margin">{this.props.pokemon.get('name')}</h3>
+
+                {this.renderMoreInfo()}
             </div>
         );
     }

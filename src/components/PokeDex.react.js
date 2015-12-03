@@ -32,6 +32,7 @@ export default React.createClass({
     return (
       <div className='container'>
         <h1>Pokédex</h1>
+        {`there are ${this.state.pokedex.size} pokemon`}
         <PokeList pokedex={this.state.pokedex} />
       </div>
     );

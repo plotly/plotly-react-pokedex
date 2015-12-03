@@ -15,7 +15,7 @@ export default React.createClass({
         })).isRequired
 
     },
-    
+
     renderPokeList() {
 
         const pokeList = this.props.pokedex.map((pokemon, i) => {
@@ -29,9 +29,8 @@ export default React.createClass({
 
     render() {
         return (
-            <div>
-            there are {this.props.pokedex.size} pokemon
-            {this.renderPokeList()}
+            <div className="poke-list">
+                { this.renderPokeList() }
             </div>
         );
     }
