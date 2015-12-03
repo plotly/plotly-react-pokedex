@@ -27,4 +27,4 @@ build/Release
 node_modules
 
 # Browserify-built JavaScript
-public/js/*
+public/js/*.js
