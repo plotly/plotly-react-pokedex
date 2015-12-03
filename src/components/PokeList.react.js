@@ -3,21 +3,36 @@
 import ImmutableTypes from 'react-immutable-proptypes';
 import React, { PropTypes } from 'react';
 
+import PokeListItem from './PokeListItem.react';
+
 export default React.createClass({
 
-  propTypes: {
+    propTypes: {
 
-    pokedex: ImmutableTypes.listOf(ImmutableTypes.shape({
-      name: PropTypes.string.isRequired,
-      resource_uri: PropTypes.string.isRequired
-    })).isRequired
-  },
+        pokedex: ImmutableTypes.listOf(ImmutableTypes.shape({
+            name: PropTypes.string.isRequired,
+            resource_uri: PropTypes.string.isRequired
+        })).isRequired
 
-  render() {
-    return (
-      <div>
-        there are {this.props.pokedex.size} pokemon
-      </div>
-    );
-  }
+    },
+    
+    renderPokeList() {
+
+        const pokeList = this.props.pokedex.map((pokemon, i) => {
+            return (
+                <PokeListItem key={i} pokemon={pokemon}/>
+            );
+        });
+
+        return pokeList;
+    },
+
+    render() {
+        return (
+            <div>
+            there are {this.props.pokedex.size} pokemon
+            {this.renderPokeList()}
+            </div>
+        );
+    }
 });
