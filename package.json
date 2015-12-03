@@ -29,8 +29,7 @@
     "pokeapi": "0.0.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
-    "react-immutable-proptypes": "^1.5.0",
-    "react-router": "^1.0.0"
+    "react-immutable-proptypes": "^1.5.0"
   },
   "devDependencies": {
     "babelify": "^7.2.0",
