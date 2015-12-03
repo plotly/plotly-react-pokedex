@@ -2,6 +2,7 @@
 
 import * as PokeActions from '../actions/PokeActions';
 import pokeStoreListener from '../utils/listeners/pokeStore.mixin';
+import PokeList from './PokeList.react';
 import PokeStore from '../stores/PokeStore';
 import React, { PropTypes } from 'react';
 
@@ -29,8 +30,9 @@ export default React.createClass({
 
   render() {
     return (
-      <div>
+      <div className='container'>
         <h1>Pokédex</h1>
+        <PokeList pokedex={this.state.pokedex} />
       </div>
     );
   }
