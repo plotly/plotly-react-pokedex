@@ -3,6 +3,7 @@
 import * as PokeActions from '../actions/PokeActions';
 import pokeStoreListener from '../utils/listeners/pokeStore.mixin';
 import PokeList from './PokeList.react';
+import ActivePokemon from './ActivePokemon.react';
 import PokeStore from '../stores/PokeStore';
 import React, { PropTypes } from 'react';
 
@@ -29,18 +30,6 @@ export default React.createClass({
         this.setState(this._getState());
     },
 
-    renderActivePokemon() {
-      if (!this.state.pokemon) return null;
-
-      else {
-        return (
-          <div>
-            {this.state.pokemon.attack}
-          </div>
-        );
-      }
-    },
-
     render() {
         return (
             <div className='container'>
@@ -50,7 +39,7 @@ export default React.createClass({
                     {`there are ${this.state.pokedex.size} pokemon`}
                 </div>
 
-                {this.renderActivePokemon()}
+                <ActivePokemon pokemon={this.state.pokemon}/>
 
                 <PokeList pokedex={this.state.pokedex} />
             </div>

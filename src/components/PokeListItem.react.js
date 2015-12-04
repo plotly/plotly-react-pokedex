@@ -35,7 +35,10 @@ export default React.createClass({
      */
     toggleOpen() {
 
-        PokeActions.get(1);
+        const resourceURI = this.props.pokemon.get('resource_uri');
+        const pokeID = resourceURI.split('/')[3];
+
+        PokeActions.get(pokeID);
 
         this.setState({
             isOpen: !this.state.isOpen
