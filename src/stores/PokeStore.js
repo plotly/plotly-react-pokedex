@@ -6,7 +6,8 @@ import BaseStore from './BaseStore';
 import Immutable from 'immutable';
 
 const _pokeStore = {
-  pokedex: Immutable.List()
+  pokedex: Immutable.List(),
+  pokemon: {}
 };
 
 /**
@@ -24,6 +25,10 @@ const PokeStore = BaseStore.extend({
    */
   getAll() {
     return _pokeStore.pokedex;
+  },
+
+  getOne() {
+    return _pokeStore.pokemon;
   }
 });
 
@@ -33,6 +38,12 @@ PokeStore.dispatchToken = AppDispatcher.register(action => {
 
     case EVENTS.POKEMON.GET_ALL:
       addAll(action.data.pokedex);
+      PokeStore.emitChange();
+      break;
+
+    case EVENTS.POKEMON.GET_ONE:
+      const pokemon = action.data.pokemon;
+      _pokeStore.pokemon = pokemon;
       PokeStore.emitChange();
       break;
   }

@@ -20,12 +20,25 @@ export default React.createClass({
 
     _getState() {
         return {
-            pokedex: PokeStore.getAll()
+            pokedex: PokeStore.getAll(),
+            pokemon: PokeStore.getOne()
         };
     },
 
     _onStoreUpdate() {
         this.setState(this._getState());
+    },
+
+    renderActivePokemon() {
+      if (!this.state.pokemon) return null;
+
+      else {
+        return (
+          <div>
+            {this.state.pokemon.attack}
+          </div>
+        );
+      }
     },
 
     render() {
@@ -36,6 +49,8 @@ export default React.createClass({
                 <div>
                     {`there are ${this.state.pokedex.size} pokemon`}
                 </div>
+
+                {this.renderActivePokemon()}
 
                 <PokeList pokedex={this.state.pokedex} />
             </div>

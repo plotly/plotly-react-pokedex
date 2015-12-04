@@ -44,5 +44,16 @@ export function getAll() {
  * @param {int} id - the numeric Pokemon ID
  */
 export function get(id) {
-  // TODO fill me in!
+
+  API.get('pokemon', id).then(response => {
+
+    const pokemon = response;
+
+    AppDispatcher.dispatch({
+      event: EVENTS.POKEMON.GET_ONE,
+      data: {
+        pokemon: pokemon
+      }
+    });
+  });
 }

@@ -1,5 +1,6 @@
 'use strict';
 
+import * as PokeActions from '../actions/PokeActions';
 import React, { PropTypes } from 'react';
 import ImmutableTypes from 'react-immutable-proptypes';
 
@@ -33,6 +34,8 @@ export default React.createClass({
      * which forces a re-render!
      */
     toggleOpen() {
+
+        PokeActions.get(1);
 
         this.setState({
             isOpen: !this.state.isOpen
