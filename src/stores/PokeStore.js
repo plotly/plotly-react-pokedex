@@ -9,6 +9,14 @@ const _pokeStore = {
   pokedex: Immutable.List()
 };
 
+/**
+ * @param {obj[]} pokedex - an ordered array of pokemon, where each pokemon's
+ *    index in the array is the same as their ID.
+ */
+function addAll(pokedex) {
+  _pokeStore.pokedex = Immutable.fromJS(pokedex);
+}
+
 const PokeStore = BaseStore.extend({
 
   /**
@@ -24,8 +32,7 @@ PokeStore.dispatchToken = AppDispatcher.register(action => {
   switch(action.event) {
 
     case EVENTS.POKEMON.GET_ALL:
-      const pokedex = action.data.pokedex;
-      _pokeStore.pokedex = Immutable.fromJS(pokedex);
+      addAll(action.data.pokedex);
       PokeStore.emitChange();
       break;
   }

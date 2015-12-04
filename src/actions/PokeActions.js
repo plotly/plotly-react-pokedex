@@ -16,12 +16,12 @@ const API = PokeAPI.v1();
  * (name and resource ID).
  */
 export function getAll() {
-  API.get('pokedex').then(response => {
+  API.get('pokedex', 1).then(response => {
 
     /*
      * Grab the list of Pokemon from the response
      */
-    const pokedex = response.objects[0].pokemon;
+    const pokedex = response.pokemon;
 
     /*
      * Dispatch it to the stores. Stores can grab this data by
