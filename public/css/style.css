@@ -7,3 +7,35 @@ body {
   width: 1200px;
   margin: 0 auto;
 }
+
+.no-margin {
+    margin: 0;
+}
+
+.poke-list {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 300px;
+    max-height: 400px;
+    overflow: scroll;
+}
+
+.poke-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.poke-item > .--more-info {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.poke-item:hover {
+    background-color: #f3f3f3;
+}

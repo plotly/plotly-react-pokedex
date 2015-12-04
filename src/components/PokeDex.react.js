@@ -8,32 +8,37 @@ import React, { PropTypes } from 'react';
 
 export default React.createClass({
 
-  mixins: [pokeStoreListener],
+    mixins: [pokeStoreListener],
 
-  getInitialState() {
-    return this._getState();
-  },
+    getInitialState() {
+        return this._getState();
+    },
 
-  componentDidMount() {
-    PokeActions.getAll();
-  },
+    componentDidMount() {
+        PokeActions.getAll();
+    },
 
-  _getState() {
-    return {
-      pokedex: PokeStore.getAll()
-    };
-  },
+    _getState() {
+        return {
+            pokedex: PokeStore.getAll()
+        };
+    },
 
-  _onStoreUpdate() {
-    this.setState(this._getState());
-  },
+    _onStoreUpdate() {
+        this.setState(this._getState());
+    },
 
-  render() {
-    return (
-      <div className='container'>
-        <h1>Pokédex</h1>
-        <PokeList pokedex={this.state.pokedex} />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className='container'>
+                <h1>Pokédex</h1>
+
+                <div>
+                    {`there are ${this.state.pokedex.size} pokemon`}
+                </div>
+
+                <PokeList pokedex={this.state.pokedex} />
+            </div>
+        );
+    }
 });
