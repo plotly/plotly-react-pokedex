@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "./node_modules/watchify/bin/cmd.js src/app.js -t [ babelify --presets [ es2015 react ] ] -o public/js/bundle.js -v"
+    "watch": "watchify src/app.js -t [ babelify --presets [ es2015 react ] ] -o public/js/bundle.js -v"
   },
   "repository": {
     "type": "git",
