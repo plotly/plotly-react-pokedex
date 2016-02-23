@@ -3,6 +3,7 @@
 import * as PokeActions from '../actions/PokeActions';
 import pokeStoreListener from '../utils/listeners/pokeStore.mixin';
 import PokeList from './PokeList.react';
+import PokeRoster from './PokeRoster.react';
 import PokeStore from '../stores/PokeStore';
 import React, { PropTypes } from 'react';
 
@@ -20,7 +21,10 @@ export default React.createClass({
 
     _getState() {
         return {
-            pokedex: PokeStore.getAll()
+            pokedex: PokeStore.getAll(),
+
+            // We add another state getter here!
+            roster: PokeStore.getRoster()
         };
     },
 
@@ -31,13 +35,29 @@ export default React.createClass({
     render() {
         return (
             <div className='container'>
-                <h1>Pokédex</h1>
+                <div className="block-group">
 
-                <div>
-                    {`there are ${this.state.pokedex.size} pokemon`}
+                    <div className="block" style={{width: '50%'}}>
+
+                        <h1>{'Pokédex'}</h1>
+
+                        <div>
+                            {`there are ${this.state.pokedex.size} pokemon`}
+                        </div>
+
+                        <PokeList pokedex={this.state.pokedex}
+                                  addPokemonToRoster={PokeActions.addPokemonToRoster}/>
+
+                    </div>
+
+                    <div className="block" style={{width: '50%'}}>
+                        <h1>{'Your Roster'}</h1>
+
+                        <PokeRoster roster={this.state.roster}/>
+                    </div>
+
                 </div>
 
-                <PokeList pokedex={this.state.pokedex} />
             </div>
         );
     }

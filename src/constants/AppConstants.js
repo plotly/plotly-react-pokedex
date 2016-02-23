@@ -3,7 +3,8 @@
 const AppConstants = {
     EVENTS: {
         POKEMON: {
-            GET_ALL: 'POKEMON_GET_ALL'
+            GET_ALL: 'POKEMON_GET_ALL',
+            ADD_TO_ROSTER: 'POKEMON_ADD_TO_ROSTER'
         }
     }
 };

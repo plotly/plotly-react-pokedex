@@ -39,10 +39,17 @@ export function getAll() {
 
 /**
 * Fetches and dispatches data on a single Pokemon.
-* For example, PokeActions.get(1) should return metadata for Bulbasaur.
+* For example, PokeActions.get('api/v1/pokemon/1/') should return metadata for Bulbasaur.
 *
-* @param {int} id - the numeric Pokemon ID
+* @param {int} resource_uri - the Pokemon's resource_uri
 */
-export function get(id) {
-    // TODO fill me in!
+export function addPokemonToRoster(resource_uri) {
+
+    API.get({ resource_uri: `/${resource_uri}` }).then(response => {
+        AppDispatcher.dispatch({
+            event: EVENTS.POKEMON.ADD_TO_ROSTER,
+            data: response
+        });
+    });
+
 }

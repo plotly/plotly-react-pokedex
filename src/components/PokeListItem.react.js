@@ -12,7 +12,9 @@ export default React.createClass({
         pokemon: ImmutableTypes.shape({
             name: PropTypes.string.isRequired,
             resource_uri: PropTypes.string.isRequired
-        })
+        }),
+
+        addPokemonToRoster: PropTypes.func.isRequired
     },
 
     /*
@@ -54,6 +56,10 @@ export default React.createClass({
         if (this.state.isOpen) {
             return (
                 <div className="--more-info">
+                    <button onClick={this.addToRoster}>
+                        {'Add to Roster'}
+                    </button>
+
                     <p className="no-margin">
                         {`resource_uri: ${this.props.pokemon.get('resource_uri')}`}
                     </p>
@@ -64,6 +70,10 @@ export default React.createClass({
         else return null;
     },
 
+    addToRoster() {
+        const resourceURI = this.props.pokemon.get('resource_uri');
+        this.props.addPokemonToRoster(resourceURI);
+    },
 
     render () {
 

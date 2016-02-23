@@ -19,6 +19,7 @@ body {
     max-width: 300px;
     max-height: 400px;
     overflow: scroll;
+    margin-bottom: 20px;
 }
 
 .poke-item {

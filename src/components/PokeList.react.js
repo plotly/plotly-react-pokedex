@@ -12,7 +12,9 @@ export default React.createClass({
         pokedex: ImmutableTypes.listOf(ImmutableTypes.shape({
             name: PropTypes.string.isRequired,
             resource_uri: PropTypes.string.isRequired
-        })).isRequired
+        })).isRequired,
+
+        addPokemonToRoster: React.PropTypes.func.isRequired
 
     },
 
@@ -27,7 +29,9 @@ export default React.createClass({
 
         const pokeList = this.props.pokedex.map((pokemon, i) => {
             return (
-                <PokeListItem key={i} pokemon={pokemon}/>
+                <PokeListItem key={i}
+                              pokemon={pokemon}
+                              addPokemonToRoster={this.props.addPokemonToRoster}/>
             );
         });
 
